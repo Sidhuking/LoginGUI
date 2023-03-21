@@ -1,0 +1,95 @@
+package Practiceprograms;
+import java.util.concurrent.Executor;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.Test;
+
+import Practiceprograms.pagefactory.PagefactoryHomePage;
+import Practiceprograms.pagefactory.Pagefactorylogin;
+import graphql.Assert;
+
+//import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Selenium {
+	public WebDriver driver;
+	Pagefactorylogin pagefactorylogin;
+	PagefactoryHomePage pagefactoryHomePage;
+	JavascriptExecutor executor= (JavascriptExecutor)driver;
+	
+
+//	@Test
+//	public void verifyLogo() {
+//		ChromeOptions co = new ChromeOptions();
+//		co.addArguments("--remote-allow-origins=*");
+//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\raghu\\eclipse-workspace\\Myfirstjavaproject\\src\\Resources\\chromedriver.exe");
+//		WebDriver driver= new ChromeDriver(co);
+//		Pagefactorylogin pagefactorylogin = new Pagefactorylogin(driver);
+//		driver.manage().window().maximize();
+//		driver.get("http://demowebshop.tricentis.com/");
+//		boolean flag = pagefactorylogin.validateLogo();
+//		Assert.assertTrue(flag);
+//		
+//	}
+	
+	
+	
+	
+	@Test
+	public void verifyLogin() throws InterruptedException {
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\raghu\\eclipse-workspace\\Myfirstjavaproject\\src\\Resources\\chromedriver.exe");
+		WebDriver driver= new ChromeDriver(co);
+		Pagefactorylogin pagefactorylogin = new Pagefactorylogin(driver);
+		driver.manage().window().maximize();
+		driver.get("http://demowebshop.tricentis.com/");
+		boolean flag = pagefactorylogin.login();
+		boolean flag1 = pagefactorylogin.HomePage();
+		boolean flag2 = pagefactorylogin.DesktopPage();
+		boolean flag3= pagefactorylogin.AddressDetails();
+		Assert.assertTrue(flag);
+		Assert.assertTrue(flag1);
+//		String actualURL= driver.getCurrentUrl();
+//		String expectedURL= "http://demowebshop.tricentis.com/";
+//		Assert.assertEquals(true,actualURL,expectedURL);
+		
+		
+		
+	}
+	
+	@Test
+	public void verifyAccountID() {
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\raghu\\eclipse-workspace\\Myfirstjavaproject\\src\\Resources\\chromedriver.exe");
+		WebDriver driver= new ChromeDriver(co);
+		Pagefactorylogin pagefactorylogin = new Pagefactorylogin(driver);
+		driver.manage().window().maximize();
+		driver.get("http://demowebshop.tricentis.com/");
+		boolean flag = pagefactorylogin.validateAccountID();
+//		pagefactorylogin.HomePage();
+		Assert.assertTrue(flag);
+		
+	}
+	
+//	@Test
+//	public void verifyHomePage() {
+//		ChromeOptions co = new ChromeOptions();
+//		co.addArguments("--remote-allow-origins=*");
+//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\raghu\\eclipse-workspace\\Myfirstjavaproject\\src\\Resources\\chromedriver.exe");
+//		WebDriver driver= new ChromeDriver(co);
+//		Pagefactorylogin pagefactorylogin = new Pagefactorylogin(driver);
+//		driver.manage().window().maximize();
+//		driver.get("http://demowebshop.tricentis.com/");
+//		
+//		boolean flag = pagefactorylogin.HomePage();
+//		Assert.assertTrue(flag);
+//		
+//	}
+	
+	
+}
